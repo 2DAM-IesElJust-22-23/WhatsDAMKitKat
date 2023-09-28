@@ -13,5 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "whatsdamkitkat"
+rootProject.name = "whatsdamkitkat2"
 include(":app")
+ 

@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.ieseljust.pdmd.whatsdamkitkat"
+    namespace = "com.example.whatsdamkitkat2"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.ieseljust.pdmd.whatsdamkitkat"
+        applicationId = "com.example.whatsdamkitkat2"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
