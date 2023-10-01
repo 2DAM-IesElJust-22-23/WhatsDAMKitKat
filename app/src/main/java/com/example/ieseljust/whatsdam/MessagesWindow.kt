@@ -1,12 +1,21 @@
 package com.example.ieseljust.whatsdam
 
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.ieseljust.whatsdam.databinding.ActivityMessagesWindowBinding
 
 class MessagesWindow : AppCompatActivity() {
+    // apliquem viewBinding
+    private lateinit var binding: ActivityMessagesWindowBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_messages_window2)
+        binding = ActivityMessagesWindowBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+        // Capturem els intents
+        val nickname = intent.getStringExtra("nickname")
+
     }
 }
