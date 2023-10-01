@@ -8,11 +8,16 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ieseljust.whatsdam.databinding.ActivityMainBinding
 import java.io.IOException
-import java.lang.Object
+import java.util.regex.Pattern
 
 class MainActivity : AppCompatActivity() {
     // Aplying the viewBinding
     private lateinit var binding: ActivityMainBinding
+
+    // Api -31
+    // Vull utilitzar esta perque tinc api 24
+    private val IP_ADDRESS_PATTERN = Pattern.compile(("^(25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[0-9])\\." + "(25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[0-9])\\." + "(25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[0-9])\\." + "(25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[0-9])$"))
+
     override fun onCreate(savedInstanceState: Bundle?) {
         // Guardem l'estat
         super.onCreate(savedInstanceState)
@@ -34,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             val serverAddress = edittextadress.text.toString()
 
             // Comprobem que s'introdueix el que toca, i mitjançant intents pasem els valors
-            if ( binding.nickNameText.text.toString()!= "" && binding.serverAddressText.text.toString() == binding.serverAddressText.text.toString()){
+            if ( nickname.isNotBlank() && addressValidator(serverAddress)){
                 val intent = Intent(this, MessagesWindow::class.java)
                 intent.putExtra("nickname", nickname)
                 intent.putExtra("serverAddress", serverAddress)
@@ -45,16 +50,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
-    // Api -31
-    // Vull utilitzar esta perque tinc api 24
-    public static final Pattern IP_ADDRESS
-
-
-    // Api +31
-    public static boolean isNumericAddress (String adrress)
-
-
-
+    // Retorna si la ip es valida utilitzant un patró que he trobat a internet per validar l'ip
+    private fun addressValidator(ip: String) :Boolean{
+        return IP_ADDRESS_PATTERN.matcher(ip).matches()
+    }
 }
