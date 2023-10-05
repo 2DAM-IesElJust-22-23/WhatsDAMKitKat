@@ -14,9 +14,12 @@ class AdapterMessage : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         // (holder as MessageViewHolder).bind(MessageData.msg[position]);
+        
     }
 
     override fun getItemCount(): Int {
-    //    return Message.msg.size
+        //return Message.msg.size
+        var a: Int = 1;
+        return a;
     }
 }

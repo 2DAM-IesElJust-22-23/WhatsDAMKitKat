@@ -3,8 +3,7 @@ package com.example.ieseljust.whatsdam
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ieseljust.whatsdam.databinding.ActivityMainBinding
 import java.io.IOException
@@ -25,20 +24,18 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        // val inputValue = idUser.text.toString()
-        //val editextnick = findViewById<EditText>(R.id.nickNameText)
-        //val edittextadress = findViewById<EditText>(R.id.serverAddressText)
-        //val btnConect = findViewById<Button>(R.id.buttonConnect)
         val editextnick = binding.nickNameText
         val edittextadress = binding.serverAddressText
         val btnConect = binding.buttonConnect
 
+        binding.MessageRecyclerView.layoutManager= LinearLayoutManager(this)
+        binding.MessageRecyclerView.setHasFixedSize(true)
+        binding.MessageRecyclerView.adapter = AdapterMessage()
+
         btnConect.setOnClickListener{
-            // El que s'ha passat per formulari s'enmagatzema com a string a la variable
             val nickname = editextnick.text.toString()
             val serverAddress = edittextadress.text.toString()
 
-            // Comprobem que s'introdueix el que toca, i mitjançant intents pasem els valors
             if ( nickname.isNotBlank() && addressValidator(serverAddress)){
                 val intent = Intent(this, MessagesWindow::class.java)
                 intent.putExtra("nickname", nickname)
@@ -50,7 +47,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Retorna si la ip es valida utilitzant un patró que he trobat a internet per validar l'ip
     private fun addressValidator(ip: String) :Boolean{
         return IP_ADDRESS_PATTERN.matcher(ip).matches()
     }
