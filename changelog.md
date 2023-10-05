@@ -1,0 +1,1 @@
+Raul Sales i Antonio :  Els canvis realitzats per a tindre en compte, i serien l'us de intents per a treballar amb el valor que s'ha introduit, de tipus String a el mainActivity, per tal de que la finestra de missatges i puga treballar amb els valors.
