@@ -3,7 +3,6 @@ package com.example.ieseljust.whatsdam
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ieseljust.whatsdam.databinding.ActivityMainBinding
 import java.io.IOException
@@ -28,10 +27,6 @@ class MainActivity : AppCompatActivity() {
         val edittextadress = binding.serverAddressText
         val btnConect = binding.buttonConnect
 
-        binding.MessageRecyclerView.layoutManager= LinearLayoutManager(this)
-        binding.MessageRecyclerView.setHasFixedSize(true)
-        binding.MessageRecyclerView.adapter = AdapterMessage()
-
         btnConect.setOnClickListener{
             val nickname = editextnick.text.toString()
             val serverAddress = edittextadress.text.toString()
@@ -45,6 +40,7 @@ class MainActivity : AppCompatActivity() {
                 IOException("Datos incorrectos")
             }
         }
+
     }
 
     private fun addressValidator(ip: String) :Boolean{

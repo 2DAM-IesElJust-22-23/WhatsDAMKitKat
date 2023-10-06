@@ -4,22 +4,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class AdapterMessage : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        // S'invoca quan es crea un nou viewholder
+class AdapterMessage : RecyclerView.Adapter<MessageViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val vista=inflater.inflate(R.layout.my_msg_viewholder, parent,false);
-        return MessageViewHolder(vista)
+        val view = inflater.inflate(R.layout.my_msg_viewholder, parent, false)
+        return MessageViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        // (holder as MessageViewHolder).bind(MessageData.msg[position]);
-        
+    override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
+        val message = MessageData.messages[position]
+        holder.bind(message)
     }
 
     override fun getItemCount(): Int {
-        //return Message.msg.size
-        var a: Int = 1;
-        return a;
+        return MessageData.messages.size
     }
 }

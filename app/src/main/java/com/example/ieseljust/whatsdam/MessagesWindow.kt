@@ -3,8 +3,9 @@ package com.example.ieseljust.whatsdam
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ieseljust.whatsdam.databinding.ActivityMessagesWindowBinding
-
+import androidx.recyclerview.widget.RecyclerView
 class MessagesWindow : AppCompatActivity() {
     // apliquem viewBinding
     private lateinit var binding: ActivityMessagesWindowBinding
@@ -22,13 +23,25 @@ class MessagesWindow : AppCompatActivity() {
         val connectionInfoTextView = binding.connectionInfoTextView
         connectionInfoTextView.text = "Conectat a $serverAddress com a $nickname"
 
-        // Botó d'enviar
         val sendBtn = binding.sendMessage
         val messageEditText = binding.MessageText
+        val recyclerView = binding.MessageRecyclerView
+        val adapter = AdapterMessage()
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
+
         sendBtn.setOnClickListener {
-            // treballem amb el missatge
-            val message = messageEditText.text.toString()
-            messageEditText.text.clear()
+            val messageText = messageEditText.text.toString()
+            if (messageText.isNotBlank()) {
+                val message = Message("NombreUsuario", messageText)
+                MessageData.addMessage(message)
+                adapter.notifyDataSetChanged()
+                messageEditText.text.clear()
+
+                // Hacer scroll hacia el último mensaje
+                recyclerView.scrollToPosition(adapter.itemCount - 1)
+            }
         }
     }
 }
