@@ -8,7 +8,7 @@ import com.example.ieseljust.whatsdam.databinding.ActivityMainBinding
 import java.io.IOException
 import java.util.regex.Pattern
 
-class MainActivity : AppCompatActivity() {
+class MainActivityController : AppCompatActivity() {
     // Aplying the viewBinding
     private lateinit var binding: ActivityMainBinding
 
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
             val serverAddress = edittextadress.text.toString()
 
             if ( nickname.isNotBlank() && addressValidator(serverAddress)){
-                val intent = Intent(this, MessagesWindow::class.java)
+                val intent = Intent(this, MessagesWindowController::class.java)
                 intent.putExtra("nickname", nickname)
                 intent.putExtra("serverAddress", serverAddress)
                 startActivity(intent)

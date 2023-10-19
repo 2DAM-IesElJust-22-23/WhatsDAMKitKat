@@ -4,12 +4,14 @@
 Sen's proporciona dos layouts més a aules, el cual tenim my view holder window i un altre. Que afegirem a la carpeta layouts junt als altres xml.
 
 **Estructura de Vistes y entitats (Tal volta siga important separar les vistes, les entitats i els controladors MVC)**
-|_AdapterMessage.kt
-|_MainActivity.kt
-|_MessageData
-|_Message
-|_MessagesWindow.kt
-|_MessagesView.kt
+controller
+    |_AdapterMessageController.kt
+    |_MainActivityController.kt
+    |_MessagesWindowController.kt
+    |_MessagesViewController.kt
+entity
+    |_MessageData
+    |_Message
 
 **AdapterMessage es un adaptador creat per als missatges com a intermediari**
 Necesitarem al create oncreateviewholder deguem pasarli la vista, unflar la vista i retornar la creació en la vista

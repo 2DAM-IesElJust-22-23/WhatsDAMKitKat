@@ -9,7 +9,7 @@ import com.example.ieseljust.whatsdam.entity.Message
 import com.example.ieseljust.whatsdam.entity.MessageData
 import java.text.SimpleDateFormat
 import java.util.Date
-class MessagesWindow : AppCompatActivity() {
+class MessagesWindowController : AppCompatActivity() {
     // apliquem viewBinding
     private lateinit var binding: ActivityMessagesWindowBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +30,7 @@ class MessagesWindow : AppCompatActivity() {
         val sendBtn = binding.sendMessage
         //Trxt del missatge
         val messageEditText = binding.MessageText
-        val adapter = AdapterMessage()
+        val adapter = AdapterMessageController()
         val recyclerView = binding.MessagesRecyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
