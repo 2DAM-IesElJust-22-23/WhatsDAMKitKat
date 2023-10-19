@@ -1,8 +1,10 @@
-package com.example.ieseljust.whatsdam
+package com.example.ieseljust.whatsdam.controller
 
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ieseljust.whatsdam.R
+import com.example.ieseljust.whatsdam.entity.Message
 
 class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val messageText: TextView = itemView.findViewById(R.id.msg_text)

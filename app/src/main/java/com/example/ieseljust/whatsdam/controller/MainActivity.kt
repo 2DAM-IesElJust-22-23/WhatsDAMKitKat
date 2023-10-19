@@ -1,4 +1,4 @@
-package com.example.ieseljust.whatsdam
+package com.example.ieseljust.whatsdam.controller
 
 
 import android.content.Intent
