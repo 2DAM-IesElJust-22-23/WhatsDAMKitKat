@@ -6,6 +6,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ieseljust.whatsdam.viewmodels.MessagesWindowController
 import com.example.ieseljust.whatsdam.databinding.ActivityMainBinding
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import com.example.ieseljust.whatsdam.viewmodels;
 import java.io.IOException
 import java.util.regex.Pattern
 
@@ -17,6 +20,8 @@ class MainActivityController : AppCompatActivity() {
     // Vull utilitzar esta perque tinc api 24
     private val IP_ADDRESS_PATTERN = Pattern.compile(("^(25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[0-9])\\." + "(25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[0-9])\\." + "(25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[0-9])\\." + "(25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[0-9])$"))
 
+
+    //private lateinit var viewModel: Mess
     override fun onCreate(savedInstanceState: Bundle?) {
         // Guardem l'estat
         super.onCreate(savedInstanceState)

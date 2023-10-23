@@ -6,4 +6,8 @@ object MessageData {
     fun addMessage(message: Message) {
         messages.add(message)
     }
+
+    fun FindAllMessage(){
+
+    }
 }

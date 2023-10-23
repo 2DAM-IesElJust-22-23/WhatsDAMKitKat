@@ -1,5 +1,9 @@
 package com.example.ieseljust.whatsdam.repository
 
+import com.example.ieseljust.whatsdam.model.MessageData;
+import com.example.ieseljust.whatsdam.model.Message;
+
+
 class MessageRepository private constructor(){
     //singleton is here baby
     companion object{
@@ -21,6 +25,12 @@ class MessageRepository private constructor(){
         }
 
     }
-
-
+    //listMessage
+    fun listMessage() = MessageData.messages;
+    //CountMess
+    fun getNumMessg() = MessageData.messages.size;
+    //addMsg
+    fun add(message: Message) = MessageData.addMessage(message);
+    //RemoveMiss
+    //fun remove(m: Message) = MessageData.remove(m);
 }
