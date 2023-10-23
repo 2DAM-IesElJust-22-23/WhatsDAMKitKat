@@ -1,9 +1,10 @@
-package com.example.ieseljust.whatsdam.controller
+package com.example.ieseljust.whatsdam.views.UI
 
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ieseljust.whatsdam.viewmodels.MessagesWindowController
 import com.example.ieseljust.whatsdam.databinding.ActivityMainBinding
 import java.io.IOException
 import java.util.regex.Pattern

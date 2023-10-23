@@ -1,4 +1,4 @@
-package com.example.ieseljust.whatsdam.entity
+package com.example.ieseljust.whatsdam.model
 
 data class Message(
     //control de l'usuari

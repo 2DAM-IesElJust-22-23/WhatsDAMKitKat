@@ -1,9 +1,9 @@
-package com.example.ieseljust.whatsdam.controller
+package com.example.ieseljust.whatsdam.viewmodels
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ieseljust.whatsdam.entity.MessageData
+import com.example.ieseljust.whatsdam.model.MessageData
 import com.example.ieseljust.whatsdam.R
 
 class AdapterMessageController : RecyclerView.Adapter<MessageViewHolderController>() {

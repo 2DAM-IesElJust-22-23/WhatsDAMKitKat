@@ -1,4 +1,4 @@
-package com.example.ieseljust.whatsdam.entity
+package com.example.ieseljust.whatsdam.model
 
 object MessageData {
     val messages: MutableList<Message> = mutableListOf()

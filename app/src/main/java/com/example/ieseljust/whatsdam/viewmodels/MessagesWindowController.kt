@@ -1,12 +1,12 @@
-package com.example.ieseljust.whatsdam.controller
+package com.example.ieseljust.whatsdam.viewmodels
 
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ieseljust.whatsdam.databinding.ActivityMessagesWindowBinding
-import com.example.ieseljust.whatsdam.entity.Message
-import com.example.ieseljust.whatsdam.entity.MessageData
+import com.example.ieseljust.whatsdam.model.Message
+import com.example.ieseljust.whatsdam.model.MessageData
 import java.text.SimpleDateFormat
 import java.util.Date
 class MessagesWindowController : AppCompatActivity() {
