@@ -4,11 +4,7 @@ package com.example.ieseljust.whatsdam.views.UI
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.ieseljust.whatsdam.viewmodels.MessagesWindowController
 import com.example.ieseljust.whatsdam.databinding.ActivityMainBinding
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import com.example.ieseljust.whatsdam.viewmodels;
 import java.io.IOException
 import java.util.regex.Pattern
 
@@ -38,7 +34,7 @@ class MainActivityController : AppCompatActivity() {
             val serverAddress = edittextadress.text.toString()
 
             if ( nickname.isNotBlank() && addressValidator(serverAddress)){
-                val intent = Intent(this, MessagesWindowController::class.java)
+                val intent = Intent(this, MessagesWindow::class.java)
                 intent.putExtra("nickname", nickname)
                 intent.putExtra("serverAddress", serverAddress)
                 startActivity(intent)

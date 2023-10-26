@@ -1,17 +1,22 @@
-package com.example.ieseljust.whatsdam.viewmodels
-
+package com.example.ieseljust.whatsdam.views.UI
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ieseljust.whatsdam.databinding.ActivityMessagesWindowBinding
 import com.example.ieseljust.whatsdam.model.Message
 import com.example.ieseljust.whatsdam.model.MessageData
+import com.example.ieseljust.whatsdam.viewmodels.AdapterMessage
+import com.example.ieseljust.whatsdam.viewmodels.MessageViewModel
 import java.text.SimpleDateFormat
 import java.util.Date
-class MessagesWindowController : AppCompatActivity() {
+
+class MessagesWindow : AppCompatActivity() {
     // apliquem viewBinding
     private lateinit var binding: ActivityMessagesWindowBinding
+    private val viewModel = MessageViewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMessagesWindowBinding.inflate(layoutInflater)
@@ -26,38 +31,36 @@ class MessagesWindowController : AppCompatActivity() {
         val connectionInfoTextView = binding.connectionInfoTextView
         connectionInfoTextView.text = "Conectat a $serverAddress com a $nickname"
 
-        //botó enviar
+        // Botón enviar
         val sendBtn = binding.sendMessage
-        //Trxt del missatge
+        // Text del mensaje
         val messageEditText = binding.MessageText
-        val adapter = AdapterMessageController()
         val recyclerView = binding.MessagesRecyclerView
-        recyclerView.adapter = adapter
+        recyclerView.adapter = AdapterMessage(this, eventListener, viewModel, this)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         sendBtn.setOnClickListener {
-            //Convertim / Parsetgem el missatge a text per a controlarlo
+            // Convertir / Parsear el mensaje a texto para controlarlo
             val messageText = messageEditText.text.toString()
-            //Si el missatge no esta buit
+            // Si el mensaje no está vacío
             if (messageText.isNotBlank()) {
-                // Obtindre l'hora al format adecuat HH:mm
+                // Obtener la hora en el formato adecuado HH:mm
                 val horaActual = SimpleDateFormat("HH:mm").format(Date())
 
-                // Crear l'instancia del missatge amb l'hora
+                // Crear la instancia del mensaje con la hora
                 val message = Message("NomUsuari", messageText, horaActual)
 
-                // Agregar el missatge a la llista
-                MessageData.addMessage(message)
+                // Agregar el mensaje a la lista
+                viewModel.addMessage(message)
 
-                // Notifica l canvi d'hora
-                adapter.notifyDataSetChanged()
-
-                // Estetica del text
+                // Estética del texto
                 messageEditText.text.clear()
 
-                // L'scroll demanat
-                recyclerView.scrollToPosition(adapter.itemCount - 1)
+                // Scroll deseado
+                recyclerView.scrollToPosition(viewModel.messages.value?.size?.minus(1) ?: 0)
             }
         }
     }
+
+    private val eventListener: (Message, View) -> Boolean = { _, _ -> false }
 }

@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ieseljust.whatsdam.R
 import com.example.ieseljust.whatsdam.model.Message
 
-class MessageViewHolderController(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val messageText: TextView = itemView.findViewById(R.id.msg_text)
 
-    fun bind(message: Message) {
+    fun bind(message: Message, eventListener: (Message, View) -> Boolean) {
         messageText.text = message.text
     }
 }
