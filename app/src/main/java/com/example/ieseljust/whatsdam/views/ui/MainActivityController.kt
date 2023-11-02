@@ -1,11 +1,11 @@
-package com.example.ieseljust.whatsdam.views.UI
+package com.example.ieseljust.whatsdam.views.ui
 
 
+import MessagesWindow
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ieseljust.whatsdam.databinding.ActivityMainBinding
-import java.io.IOException
 import java.util.regex.Pattern
 
 class MainActivityController : AppCompatActivity() {
@@ -38,8 +38,6 @@ class MainActivityController : AppCompatActivity() {
                 intent.putExtra("nickname", nickname)
                 intent.putExtra("serverAddress", serverAddress)
                 startActivity(intent)
-            } else{
-                IOException("Datos incorrectos")
             }
         }
 

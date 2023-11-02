@@ -1,24 +1,27 @@
 package com.example.ieseljust.whatsdam.viewmodels
 
-import androidx.lifecycle.LiveData
+import android.app.Application
+import android.view.View
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.ieseljust.whatsdam.model.Message
 import com.example.ieseljust.whatsdam.repository.MessageRepository
 
-class MessageViewModel {
-    private val repository: MessageRepository = MessageRepository.getInstance()
-    private val _messages = MutableLiveData<List<Message>>()
-    val messages: LiveData<List<Message>> get() = _messages
+class MessageViewModel(application: Application) : AndroidViewModel(application) {
+    private val _adaptador = MutableLiveData<AdapterMessage>().apply {
+        value = AdapterMessage()
+    }
+    val adaptador: MutableLiveData<AdapterMessage> = _adaptador
 
-    init {
-        // Inicializar la lista de mensajes desde el repositorio
-        _messages.value = repository.listMessage()
+    fun addMessage(e: Message) {
+        if (MessageRepository.getInstance().addMessage(e)) {
+            adaptador.value?.notifyItemInserted(MessageRepository.getInstance().getNumMessg() - 1)
+        }
     }
 
-    fun addMessage(message: Message) {
-        // Agregar el mensaje al repositorio
-        repository.add(message)
-        // Actualizar la lista de mensajes
-        _messages.value = repository.listMessage()
+    private fun MessageLongClickManager(message: Message, v: View): Boolean {
+        val index = MessageRepository.getInstance().remove(message)
+        adaptador.value?.notifyItemRemoved(index)
+        return true
     }
 }

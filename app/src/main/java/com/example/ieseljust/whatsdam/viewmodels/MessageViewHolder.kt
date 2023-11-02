@@ -8,8 +8,10 @@ import com.example.ieseljust.whatsdam.model.Message
 
 class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val messageText: TextView = itemView.findViewById(R.id.msg_text)
+    val time: TextView = itemView.findViewById(R.id.msg_me_timestamp)
 
-    fun bind(message: Message, eventListener: (Message, View) -> Boolean) {
+    fun bind(message: Message) {
         messageText.text = message.text
+        time.text = message.time
     }
 }
