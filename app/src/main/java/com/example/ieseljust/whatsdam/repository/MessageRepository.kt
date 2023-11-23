@@ -3,7 +3,7 @@ package com.example.ieseljust.whatsdam.repository
 import com.example.ieseljust.whatsdam.model.Message
 import com.example.ieseljust.whatsdam.model.MessageData
 
-class MessageRepository private constructor() {
+class ºMessageRepository private constructor() {
     companion object {
         private var INSTANCE: MessageRepository? = null
 

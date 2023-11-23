@@ -8,11 +8,12 @@ import com.example.ieseljust.whatsdam.model.Message
 import com.example.ieseljust.whatsdam.repository.MessageRepository
 
 class MessageViewModel(application: Application) : AndroidViewModel(application) {
-    private val _adaptador = MutableLiveData<AdapterMessage>().apply {
-        value = AdapterMessage()
-    }
-    val adaptador: MutableLiveData<AdapterMessage> = _adaptador
-
+    private val communicationManager = CommunicationManager(Messages())
+    //private val _adaptador = MutableLiveData<AdapterMessage>().apply {
+    //    value = AdapterMessage()
+    //}
+    //val adaptador: MutableLiveData<AdapterMessage> = _adaptador
+    val messages: LiveData<ArrayList<Message>> = _messages.messages
     fun addMessage(e: Message) {
         if (MessageRepository.getInstance().addMessage(e)) {
             adaptador.value?.notifyItemInserted(MessageRepository.getInstance().getNumMessg() - 1)

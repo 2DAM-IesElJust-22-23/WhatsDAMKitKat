@@ -13,9 +13,6 @@
         android:theme="@style/Theme.Whatsdam"
         tools:targetApi="31">
         <activity
-            android:name=".views.ui.MessagesWindow"
-            android:exported="true" />
-        <activity
             android:name=".views.ui.MainActivityController"
             android:exported="true">
             <intent-filter>

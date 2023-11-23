@@ -38,6 +38,7 @@
                 android:textColor="#ffffff"
                 android:textSize="16sp" />
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -49,4 +50,6 @@
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="@+id/msg_cardview"
         app:layout_constraintEnd_toStartOf="@+id/msg_cardview" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
